@@ -14,6 +14,9 @@ const Feed = () => {
 
     const sendPost = e => {
         e.preventDefault();
+
+        
+
     }
 
     return(
