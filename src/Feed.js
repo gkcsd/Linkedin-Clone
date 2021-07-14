@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import "./Feed.css";
 import CreateIcon from "@material-ui/icons/Create";
 import InputOption from "./InputOption";
@@ -9,6 +9,13 @@ import CalendarViewDayIcon from "@material-ui/icons/CalendarViewDay"
 import Post from "./Post";
 
 const Feed = () => {
+
+    const [posts, setPosts] = useState([]);
+
+    const sendPost = e => {
+        e.preventDefault();
+    }
+
     return(
         <div className="feed">
             <div className="feed_inputContainer">
@@ -16,7 +23,7 @@ const Feed = () => {
                     <CreateIcon />
                     <form>
                         <input type="text" placeholder="Start a post" />
-                        <button type="submit">Send</button>
+                        <button onClick={sendPost} type="submit">Send</button>
                     </form>
                 </div>
                 <div className="feed_inputOptions">
@@ -28,6 +35,11 @@ const Feed = () => {
             </div>
 
             {/* Post */}
+
+            {posts.map((post) => (
+                <Post />
+            ))}
+
             <Post name="Ganesh Kale" description="This is a test"
             message="Wow, this worked"
             />
