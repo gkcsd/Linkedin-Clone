@@ -29,7 +29,7 @@ const App = () => {
         dispatch(logout());
       }
     })
-  },[])
+  },[dispatch])
 
   return (
     <div className="app">
@@ -41,7 +41,6 @@ const App = () => {
         <div className="app_body">
           <Sidebar />
           <Feed />
-        
           <Widgets />
         </div>
       )}
