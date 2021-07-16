@@ -20,7 +20,7 @@ const Sidebar = () => {
             <div className="sidebar_top">
                 <img src="https://images.unsplash.com/photo-1625474941653-4343bbb8267a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=750&q=80" alt="" />
                 <Avatar src={user.photoUrl} className="sidebar_avatar">{user.email[0]}</Avatar>
-                <h2>{user.name}</h2>
+                <h2>{user.displayName}</h2>
                 <h4>{user.email}</h4>
             </div>
             <div className="sidebar_stats">
