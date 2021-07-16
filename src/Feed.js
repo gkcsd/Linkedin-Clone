@@ -17,19 +17,19 @@ const Feed = () => {
 
     const user = useSelector(selectUser);
 
-    const [input, setInput] = useState('');
+    const [inputValue, setInputValue] = useState("");
     const [posts, setPosts] = useState([]);
 
     useEffect(() => {
-        db.collection("posts").orderBy("timestamp", "desc").onSnapshot((snapshot) => (
-            setPosts(
-                snapshot.docs.map((doc) => ({
-                    id: doc.id,
-                    data: doc.data(),
-                }))
-            )
+        db.collection("posts").orderBy('timestamp', 'desc').onSnapshot(snapshot => (
+          setPosts(snapshot.docs.map(doc => (
+            {
+              id: doc.id,
+              data: doc.data(),
+            }
+          )))
         ))
-    }, [])
+      }, [])
 
     const sendPost = (e) => {
         e.preventDefault();
@@ -37,12 +37,12 @@ const Feed = () => {
         db.collection("posts").add({
             name: user.displayName,
             description: user.email,
-            message: input,
+            message: inputValue,
             photoUrl: user.photoUrl || "",
             timestamp: firebase.firestore.FieldValue.serverTimestamp(),
         });
 
-        setInput("");
+        setInputValue("");
     };
 
     return(
@@ -51,7 +51,7 @@ const Feed = () => {
                 <div className="feed_input">
                     <CreateIcon />
                     <form>
-                        <input value={input} onChange={e => setInput(e.target.value)} type="text" placeholder="Start a post" />
+                        <input value={inputValue} onChange={(e) => setInputValue(e.target.value)} type="text" placeholder="Start a post" />
                         <button onClick={sendPost} type="submit">Send</button>
                     </form>
                 </div>
@@ -67,7 +67,7 @@ const Feed = () => {
 
            <FlipMove>
            {posts.map(({id, data: { name, description, message, 
-            photoUrl } }) => (
+            photoUrl }}) => (
                 <Post 
                 key={id}
                 name={name}
