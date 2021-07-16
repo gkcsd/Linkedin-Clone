@@ -19,7 +19,7 @@ const Header = () => {
     const dispatch = useDispatch();
 
     const logoutOfApp = () => {
-        dispatch(logout())
+        dispatch(logout());
         auth.signOut();
     }
 
@@ -40,7 +40,7 @@ const Header = () => {
                 <HeaderOption Icon={BusinessCenterIcon} title="Jobs" />
                 <HeaderOption Icon={ChatIcon} title="Messaging" />
                 <HeaderOption Icon={NotificationsIcon} title="Notifications" />
-                <HeaderOption avatar={user ? true : false} title={user?.name}
+                <HeaderOption avatar={user ? true : false} title={user?.displayName}
                 onClick={logoutOfApp}
                 />
             </div>
