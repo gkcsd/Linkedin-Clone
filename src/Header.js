@@ -40,7 +40,7 @@ const Header = () => {
                 <HeaderOption Icon={BusinessCenterIcon} title="Jobs" />
                 <HeaderOption Icon={ChatIcon} title="Messaging" />
                 <HeaderOption Icon={NotificationsIcon} title="Notifications" />
-                <HeaderOption avatar={user ? true : false} title={user?.displayName}
+                <HeaderOption avatar={user ? true : false} title={!(user?.displayName) ? (user ? "Me" : "") : user?.displayName}
                 onClick={logoutOfApp}
                 />
             </div>
