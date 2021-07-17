@@ -1,5 +1,7 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) template.
 
+##LinkedIn Clone
+
 APP LINK- https://linkedin-clone-cf23d.web.app/
 
 ## Available Scripts
