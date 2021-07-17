@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { auth } from "./firebase";
+import { auth } from "./Firebase/firebase";
 import { login } from "./features/userSlice";
 import "./Login.css";
+import { toast } from "react-toastify";
 
 const Login = () => {
 
@@ -23,13 +24,24 @@ const Login = () => {
                 displayName: userAuth.user.displayName,
                 profileUrl: userAuth.user.photoURL,
             }))
+            toast(`Welcome, You Successfully Logged In `, {
+                type: "success"
+            });
         })
-        .catch(error => alert(error));
+        .catch(error => {
+            console.log(error)
+            toast(error.message, {
+                type: 'error'
+            })
+        }
+        );
     }
 
     const register = () => {
         if(!name) {
-            return alert("Please Enter Full Name!");
+            return toast("Please Enter Full Name!", {
+                type: "error"
+            });
         }
 
         auth.createUserWithEmailAndPassword(email, password)
@@ -47,8 +59,17 @@ const Login = () => {
                         photoUrl: profilePic,
                     }))
                 })
+                toast(`Welcome, You Successfully Registerd`, {
+                    type: "success"
+                });
             }
-        ).catch(error => alert(error));
+        ).catch(error => {
+            console.log(error)
+            toast(error.message, {
+                type: 'error'
+            })
+        }
+        );
     }
 
     return(
