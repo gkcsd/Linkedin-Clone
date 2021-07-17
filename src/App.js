@@ -1,13 +1,16 @@
 import React, { useEffect } from 'react';
 import './App.css';
-import Header from './Header';
-import Sidebar from './Sidebar';
-import Feed from "./Feed";
+import Header from './components/Header/Header';
+import Sidebar from './components/Body/Sidebars/Sidebar';
+import Feed from "./components/Body/StorySection/Feed";
 import { useSelector, useDispatch } from 'react-redux';
 import { login, logout, selectUser } from './features/userSlice';
-import { auth } from './firebase';
+import { auth } from './Firebase/firebase';
 import Login from "./Login";
-import Widgets from './Widgets';
+import Widgets from './components/Body/WidgetsSection/Widgets';
+import {ToastContainer} from "react-toastify"
+import "react-toastify/dist/ReactToastify.min.css"
+
 
 const App = () => {
 
@@ -33,6 +36,7 @@ const App = () => {
 
   return (
     <div className="app">
+      <ToastContainer />
       <Header />
 
       {!user ? (
